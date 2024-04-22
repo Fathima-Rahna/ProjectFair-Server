@@ -97,3 +97,16 @@ try{
 
 
 }
+
+
+//remove
+exports.removeProject = async (req,res)=>{
+    console.log("inside remove project");
+    const {pid} =req.params
+    try{
+        const projectDetails = await projects.findByIdAndDelete({_id:pid})
+        res.status(200).json(projectDetails)
+    }catch(err){
+      res.status(401).json(err)
+    }
+}
